@@ -36,7 +36,6 @@ body {
 
 
 .todo-text{
-
     margin: 15px;
     color: white;
 }
@@ -45,4 +44,3 @@ body {
     display: flex;
     flex-direction: column;
 }
-
