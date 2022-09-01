@@ -1,11 +1,48 @@
-body{
+body {
     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(49,49,150,1) 35%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(49,49,150,1) 35%, rgba(0,212,255,1) 100%);
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+    margin: 0px;
+}
+
+.app{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#todo-header{
+    color: aliceblue;
+    text-shadow: 1px;
+    font-size: 70px;
+}
+
+.form{
+    display: inline-flex;
+    gap: 8px;
+}
+
+#todo-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
-.todo-list{
-    margin: 30px;
+.todo-text{
+
+    margin: 15px;
     color: white;
+}
+
+.test{
+    display: flex;
+    flex-direction: column;
 }
 
