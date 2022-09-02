@@ -57,7 +57,8 @@ body {
     border-image-slice: 1;    
 }
 
-.test{
+.text-field{
+    width: 50vh;
     display: flex;
     flex-direction: column;
 }
