@@ -4,22 +4,24 @@ let todoInput = document.getElementById("todoInput");
 
 todoInput.addEventListener('keypress', (event) => {
     if ( event.code == "Enter") {
-        const todo = {
-            text : todoInput.value,
-            isCompleted : false
-        };
+        if( todoInput.value.trim().length){
 
-        
-        const todoContainer = document.getElementById('todo-container')
-        let createTodo = document.createElement('li');
+            const todo = {
+                text : todoInput.value,
+                isCompleted : false
+            };
+            
+            
+            const todoContainer = document.getElementById('todo-container')
+            let createTodo = document.createElement('li');
         createTodo.textContent = todo.text; 
         createTodo.classList.add('todo-text');
-
+        
         let container = document.getElementById('todo-container');
         
         let createList = document.createElement('div');
         createList.classList.add('todo-list');
-
+        
         let createDelBtn = document.createElement('button');
         let createEditBtn = document.createElement('button');
         createDelBtn.textContent = 'Delete';
@@ -38,14 +40,18 @@ todoInput.addEventListener('keypress', (event) => {
             if (todo.isCompleted) {
                 todo['isCompleted'] = false;
                 createTodo.classList.remove('complatedTask');
-
+                
             }else {
                 todo.isCompleted = true; 
                 createTodo.classList.add('complatedTask');
             }
         } )
-
+        
         deleteFunc(createDelBtn);
         editFunc(createEditBtn, todo.text);
+     }
+     else{
+        alert('Cannot be empty');
+     }
     }
 } )
