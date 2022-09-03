@@ -46,5 +46,6 @@ todoInput.addEventListener('keypress', (event) => {
         } )
 
         deleteFunc(createDelBtn);
+        editFunc(createEditBtn, todo.text);
     }
 } )
