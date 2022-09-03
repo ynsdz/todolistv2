@@ -6,13 +6,14 @@ todoInput.addEventListener('keypress', (event) => {
     if ( event.code == "Enter") {
         const todo = {
             text : todoInput.value,
-            isCompleted : false,
-        }  
+            isCompleted : false
+        };
+
+        
         const todoContainer = document.getElementById('todo-container')
         let createTodo = document.createElement('li');
         createTodo.textContent = todo.text; 
         createTodo.classList.add('todo-text')
-        createTodo.setAttribute('isCompleted', todo.isCompleted);
 
         let container = document.getElementById('todo-container');
         
@@ -33,14 +34,14 @@ todoInput.addEventListener('keypress', (event) => {
         
         todoInput.value = '';
         
-        createTodo.addEventListener('click',  (e)=>{
-            console.log(e);
-            if (e.target.style.textDecoration == 'line-through') {
-                e.target.style.textDecoration = 'none';
-                e.target.style.opacity = 1;    
+        createTodo.addEventListener('click',  ()=>{
+            if (todo.isCompleted) {
+                todo['isCompleted'] = false;
+                createTodo.classList.remove('complatedTask');
+
             }else {
-                e.target.style.textDecoration = 'line-through';
-                e.target.style.opacity = 0.5;
+                todo.isCompleted = true; 
+                createTodo.classList.add('complatedTask');
             }
         } )
     }
