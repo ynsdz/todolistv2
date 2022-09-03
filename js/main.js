@@ -1,6 +1,6 @@
+
 const todoBttn = document.getElementById("todoButton");
 let todoInput = document.getElementById("todoInput"); 
-const formfalan = document.getElementById('form');
 
 todoInput.addEventListener('keypress', (event) => {
     if ( event.code == "Enter") {
@@ -13,7 +13,7 @@ todoInput.addEventListener('keypress', (event) => {
         const todoContainer = document.getElementById('todo-container')
         let createTodo = document.createElement('li');
         createTodo.textContent = todo.text; 
-        createTodo.classList.add('todo-text')
+        createTodo.classList.add('todo-text');
 
         let container = document.getElementById('todo-container');
         
@@ -28,8 +28,8 @@ todoInput.addEventListener('keypress', (event) => {
         createEditBtn.classList.add('edit-btn');
         
         createList.appendChild(createTodo);
-        createList.appendChild(createDelBtn);
         createList.appendChild(createEditBtn);
+        createList.appendChild(createDelBtn);
         container.appendChild(createList);
         
         todoInput.value = '';
@@ -44,5 +44,7 @@ todoInput.addEventListener('keypress', (event) => {
                 createTodo.classList.add('complatedTask');
             }
         } )
+
+        deleteFunc(createDelBtn);
     }
 } )
