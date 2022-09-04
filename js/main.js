@@ -35,20 +35,27 @@ todoInput.addEventListener('keypress', (event) => {
         container.appendChild(createList);
         
         todoInput.value = '';
-        
-        createTodo.addEventListener('click',  ()=>{
-            if (todo.isCompleted) {
+
+        createTodo.addEventListener('click', () => {
+            if (createTodo.classList.contains('complatedTask')) {
                 todo['isCompleted'] = false;
+                console.log(createTodo);
                 createTodo.classList.remove('complatedTask');
+                console.log(createTodo);
+
                 
             }else {
                 todo.isCompleted = true; 
+                console.log(createTodo);
                 createTodo.classList.add('complatedTask');
+                console.log(createTodo);
+
             }
+
         } )
         
         deleteFunc(createDelBtn);
-        editFunc(createEditBtn, todo, createList);
+        editFunc(createEditBtn, todo, createList, createTodo);
      }
      else{
         alert('Cannot be empty');
