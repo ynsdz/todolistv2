@@ -48,7 +48,7 @@ todoInput.addEventListener('keypress', (event) => {
         } )
         
         deleteFunc(createDelBtn);
-        editFunc(createEditBtn, todo.text);
+        editFunc(createEditBtn, todo, createList);
      }
      else{
         alert('Cannot be empty');
