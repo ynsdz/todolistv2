@@ -1,6 +1,11 @@
 const deleteFunc = (button) => {
     button.addEventListener('click', function(){
-        button.parentElement.remove();
+        todoStore.forEach(element => {
+            if(element.id == button.parentElement.dataset.id){
+                todoStore.splice(todoStore.findIndex(x => x.id === element.id),1)
+                button.parentElement.remove();
+            }
+        })
     })
 }
 
