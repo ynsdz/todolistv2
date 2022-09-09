@@ -22,15 +22,18 @@ todoInput.addEventListener('keypress', (event) => {
         let createList = document.createElement('div');
         createList.classList.add('todo-list');
         createList.setAttribute('data-id', todo.id);
-        console.log(createList.dataset.id);
+
         let createDelBtn = document.createElement('button');
         let createEditBtn = document.createElement('button');
+        let createEditInp = document.createElement('input');
         createDelBtn.textContent = 'Delete';
         createEditBtn.textContent= 'Edit';
         createDelBtn.classList.add('delete-btn');
         createEditBtn.classList.add('edit-btn');
+        createEditInp.classList.add('edit-input');
         
         createList.appendChild(createTodo);
+        createList.appendChild(createEditInp);
         createList.appendChild(createEditBtn);
         createList.appendChild(createDelBtn);
         container.appendChild(createList);
@@ -51,7 +54,8 @@ todoInput.addEventListener('keypress', (event) => {
             });
         })
         deleteFunc(createDelBtn);
-        editFunc(createEditBtn, todo, createList);
+        // editFunc(createEditBtn, todo, createList);
+        test(createEditBtn)
      }
      else{
         alert('Cannot be empty');

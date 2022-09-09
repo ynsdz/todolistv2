@@ -9,48 +9,26 @@ const deleteFunc = (button) => {
     })
 }
 
-const editFunc = (button, todoText, list) => {
+const editFunc = (button) => {
     button.addEventListener('click', function(){
-        console.log(todoStore);
-            if(button.textContent.toLowerCase()=='edit'){
-                let tempTodo = todoText;
-                console.log(tempTodo)
-                for(let i = 0; i<button.parentElement.children.length; i++){
-                    if(button.parentElement.children[i].classList.contains('todo-text')){
-                        button.parentElement.children[i].remove();
-                    }}
-                let editInput = document.createElement('input');
-                editInput.classList.add('edit-input');
-                editInput.type = 'text';
-                editInput.value = tempTodo.text;
-                list.appendChild(editInput);
-                button.textContent = 'Save';
-            }
+        todoStore.forEach(element => {
+            if(element.id == button.parentElement.dataset.id){
+                if(button.textContent.toLowerCase()=='edit'){
+                    console.log(button.parentElement.children)
+                    button.parentElement.children[0].style.display = 'none';
+                    button.parentElement.children[1].style.display = 'flex';
+                    button.parentElement.children[1].value = element.text;
+                    button.parentElement.children[1].focus();
+                    button.textContent = 'Save';
             
-            else{
-                let tempTodo = todoText;
-                editInput = button.parentElement.children[2] ;
-                tempTodo.text = editInput.value;
-                button.parentElement.children[2].remove();
-                let createTodo = document.createElement('li');
-                createTodo.textContent = tempTodo.text;
-                createTodo.classList.add('todo-text');    
-           
-                    createTodo.addEventListener('click', () => {
-                        if (createTodo.classList.contains('complatedTask')) {
-                            tempTodo['isCompleted'] = false;
-                            createTodo.classList.remove('complatedTask');
-                            
-                        }else {
-                            tempTodo.isCompleted = true; 
-                            createTodo.classList.add('complatedTask');
-                        }
-                    } )
-                    
-                    list.appendChild(createTodo);
+                 }else{
+                    button.parentElement.children[1].style.display = 'none';
+                    button.parentElement.children[0].style.display = 'flex';
+                    element.text = button.parentElement.children[1].value;
+                    button.parentElement.children[0].innerHTML = element.text;
                     button.textContent = 'Edit';
-                }
-            // }
-            })
         }
-        
+            }
+        })
+    })
+}        

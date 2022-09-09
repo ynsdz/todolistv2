@@ -80,6 +80,7 @@ body {
     flex-grow: 3;
     order: 1;
     color: black;
+    display: none;
 }
 
 .complatedTask{
