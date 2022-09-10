@@ -9,8 +9,14 @@ todoInput.addEventListener('keypress', (event) => {
         const todo = {
             text : todoInput.value,
             isCompleted : false,
-            id : Math.floor((Math.random() * 100) + 1),
+            id : Math.floor((Math.random() * 100) + 1),  
         };
+
+        todoStore.forEach(element => {
+            if(element.id == todo.id){
+                todo.id = Math.floor((Math.random() * 100) + 1);
+            }
+        });
         todoStore.push(todo);
         
         const todoContainer = document.getElementById('todo-container')
@@ -22,7 +28,7 @@ todoInput.addEventListener('keypress', (event) => {
         let createList = document.createElement('div');
         createList.classList.add('todo-list');
         createList.setAttribute('data-id', todo.id);
-
+        
         let createDelBtn = document.createElement('button');
         let createEditBtn = document.createElement('button');
         let createEditInp = document.createElement('input');
