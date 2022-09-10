@@ -1,48 +1,63 @@
+const todoStore = [];
 const todoBttn = document.getElementById("todoButton");
 let todoInput = document.getElementById("todoInput"); 
-// let listItems = document.getElementById('todo-list');
 
-todoBttn.addEventListener('click', ()=> {
-    const todo = 
-    {
-        text : todoInput.value,
-        isCompleted : false,
-    }  
-  
-    const todoContainer = document.getElementById('todo-container')
-    let createTodo = document.createElement('li');
-    createTodo.textContent = todo.text; 
-    createTodo.classList.add('todo-list')
-    createTodo.setAttribute('isCompleted', todo.isCompleted);
-    todoContainer.appendChild(createTodo)
-    todoInput.value = '';
-    
-    createTodo.addEventListener('click',  (e)=>{
-        // let result = condition ? value1 : value2;
-        if(e.target.style.textDecoration == 'line-through'){
-            e.target.style.textDecoration = 'none';
-            e.target.style.opacity = 1;
-            
-        }else {
-            e.target.style.textDecoration = 'line-through';
-            e.target.style.opacity = 0.5;
-        }
+todoInput.addEventListener('keypress', (event) => {
+    if ( event.code == "Enter") {
+        if( todoInput.value.trim().length){
 
-    })
-})
-// setInterval()
-// const test = 
-// listItems.addEventListener('click', (e)=>{
-//     console.log(e.target)
-// })
+        const todo = {
+            text : todoInput.value,
+            isCompleted : false,
+            id : Math.floor((Math.random() * 100) + 1),
+        };
+        todoStore.push(todo);
+        
+        const todoContainer = document.getElementById('todo-container')
+        let createTodo = document.createElement('div');
+        createTodo.textContent = todo.text; 
+        createTodo.classList.add('todo-text');
+        
+        let container = document.getElementById('todo-container');
+        let createList = document.createElement('div');
+        createList.classList.add('todo-list');
+        createList.setAttribute('data-id', todo.id);
 
+        let createDelBtn = document.createElement('button');
+        let createEditBtn = document.createElement('button');
+        let createEditInp = document.createElement('input');
+        createDelBtn.textContent = 'Delete';
+        createEditBtn.textContent= 'Edit';
+        createDelBtn.classList.add('delete-btn');
+        createEditBtn.classList.add('edit-btn');
+        createEditInp.classList.add('edit-input');
+        
+        createList.appendChild(createTodo);
+        createList.appendChild(createEditInp);
+        createList.appendChild(createEditBtn);
+        createList.appendChild(createDelBtn);
+        container.appendChild(createList);
+        
+        todoInput.value = '';
 
-// let timerId = setTimeout(function tick() {
-//     let listItems = document.getElementsByClassName('todo-list');
-//     console.log(listItems)
-//     listItems.addEventListener('click', (e)=>{
-//     console.log(e.target)
-//     })
-//     timerId = setTimeout(tick, 150); // (*)
-//   }, 200);
-
+        createTodo.addEventListener('click', () => {
+            todoStore.forEach(Element => {
+                if(Element.id == createTodo.parentElement.dataset.id){
+                    if(Element.isCompleted){
+                        Element.isCompleted = false;
+                        createTodo.classList.remove('complatedTask');
+                    } else {
+                        Element.isCompleted = true;
+                        createTodo.classList.add('complatedTask');
+                    }
+                }
+            });
+        })
+        deleteFunc(createDelBtn);
+        editFunc(createEditBtn)
+     }
+     else{
+        alert('Cannot be empty');
+     }
+    }
+} )
