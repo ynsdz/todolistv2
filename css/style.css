@@ -79,8 +79,22 @@ body {
     margin: 15px;
     flex-grow: 3;
     order: 1;
-    color: black;
     display: none;
+    border: none;
+      border-bottom-color: currentcolor;
+      border-bottom-style: none;
+      border-bottom-width: medium;
+    font-weight: bold;
+    font-size: 1rem;
+    outline: none;
+    border-bottom: 1.5px solid rgb(33, 136, 56);
+    color: rgb(33, 136, 56);
+    background: none;
+}
+
+.save-btn{
+    background-color: rgb(33, 136, 56) !important;
+    border: 1px solid rgb(33, 136, 56) !important;
 }
 
 .complatedTask{

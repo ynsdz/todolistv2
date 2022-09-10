@@ -14,11 +14,11 @@ const editFunc = (button) => {
         todoStore.forEach(element => {
             if(element.id == button.parentElement.dataset.id){
                 if(button.textContent.toLowerCase()=='edit'){
-                    console.log(button.parentElement.children)
                     button.parentElement.children[0].style.display = 'none';
                     button.parentElement.children[1].style.display = 'flex';
                     button.parentElement.children[1].value = element.text;
                     button.parentElement.children[1].focus();
+                    button.classList.add('save-btn');
                     button.textContent = 'Save';
             
                  }else{
@@ -26,6 +26,7 @@ const editFunc = (button) => {
                     button.parentElement.children[0].style.display = 'flex';
                     element.text = button.parentElement.children[1].value;
                     button.parentElement.children[0].innerHTML = element.text;
+                    button.classList.remove('save-btn');
                     button.textContent = 'Edit';
         }
             }
