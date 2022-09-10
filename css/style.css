@@ -1,11 +1,112 @@
-body{
+body {
     background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(49,49,150,1) 35%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(49,49,150,1) 35%, rgba(0,212,255,1) 100%);
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+    margin: 0px;
 }
 
+.app{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#todo-header{
+    color: aliceblue;
+    text-shadow: 1px;
+    font-size: 70px;
+}
+
+.form{
+    display: inline-flex;
+    gap: 8px;
+}
+
+#todo-container{
+    display: flex;
+    flex-direction: column;
+}
 
 .todo-list{
-    margin: 30px;
-    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
+.todo-list > button {
+    height: 1.2rem;
+    font-weight: bold;
+    line-height: 0rem;
+    padding: 0.5rem;
+    margin-left: 0.2rem;
+    border: 1px solid white;
+    border-radius: 0.3rem;
+    display: flex;
+    transition: 0.3s;
+    color: #ddd;
+    background-color: inherit;
+    order: 2;
+}
+
+.todo-list > button:hover{
+    cursor: pointer;
+    filter: brightness(0.7);
+}
+
+.edit-btn:hover {
+    background-color: rgb(204, 153, 0);
+    border: 1px solid rgb(204, 153, 0);
+  }
+  
+  .delete-btn:hover {
+    background-color: rgb(154, 27, 39);
+    border: 1px solid rgb(154, 27, 39);
+  }
+
+.todo-text{
+    margin: 15px;
+    color: white;
+    flex-grow: 3;
+    text-decoration: none;
+    opacity: 1;
+    overflow: hidden;
+    order: 1;
+}
+
+.edit-input{
+    margin: 15px;
+    flex-grow: 3;
+    order: 1;
+    color: black;
+}
+.complatedTask{
+    text-decoration: line-through;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+#todoInput{
+    width: 100%;
+    border: 0;
+    border-bottom: 3px solid gray;
+    outline: 0;
+    background-color: transparent;
+    font-size: 1.3rem;
+    color: white;
+    font-family: inherit;
+    padding: 5px 0;
+}
+
+#todoInput:focus{
+    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image-slice: 1;    
+}
+
+.text-field{
+    width: 50vh;
+    display: flex;
+    flex-direction: column;
+}
+
 
