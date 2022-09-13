@@ -1,10 +1,9 @@
 const deleteFunc = (button) => {
     button.addEventListener('click', function(){
-        todoStore.forEach(element => {
+        let todosArray = JSON.parse(localStorage.getItem('todos'));
+        todosArray.forEach(element => {
             if(element.id == button.parentElement.dataset.id){
-                let todosArray = JSON.parse(localStorage.getItem('todos'));
                 todosArray.splice(todosArray.findIndex(x => x.id === element.id),1);
-                todoStore.splice(todoStore.findIndex(x => x.id === element.id),1);
                 localStorage.setItem('todos', JSON.stringify(todosArray));
                 button.parentElement.remove();
             }
