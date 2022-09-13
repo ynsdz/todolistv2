@@ -2,7 +2,10 @@ const deleteFunc = (button) => {
     button.addEventListener('click', function(){
         todoStore.forEach(element => {
             if(element.id == button.parentElement.dataset.id){
-                todoStore.splice(todoStore.findIndex(x => x.id === element.id),1)
+                let todosArray = JSON.parse(localStorage.getItem('todos'));
+                todosArray.splice(todosArray.findIndex(x => x.id === element.id),1);
+                todoStore.splice(todoStore.findIndex(x => x.id === element.id),1);
+                localStorage.setItem('todos', JSON.stringify(todosArray));
                 button.parentElement.remove();
             }
         })
@@ -28,7 +31,7 @@ const editFunc = (button) => {
                     button.parentElement.children[0].innerHTML = element.text;
                     button.classList.remove('save-btn');
                     button.textContent = 'Edit';
-        }
+                }
             }
         })
     })
