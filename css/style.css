@@ -70,9 +70,13 @@ body {
     flex-grow: 3;
     text-decoration: none;
     opacity: 1;
-    overflow: hidden;
+    overflow-x: auto;
     order: 1;
     font-size: 1.2rem;
+    user-select: none;
+}
+.todo-list .grabItem{
+    color: white;
 }
 
 .edit-input{
@@ -121,9 +125,12 @@ body {
 }
 
 .text-field{
-    width: 50vh;
+    width: 40rem;
     display: flex;
     flex-direction: column;
 }
 
-
+.draggin {
+    opacity: 0.5;
+    position: absolute;
+}

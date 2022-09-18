@@ -42,16 +42,21 @@ const pushTodo = () => {
     let createList = document.createElement('div');
     createList.classList.add('todo-list');
     createList.setAttribute('data-id', todo.id);
+    createList.setAttribute('draggable', true);
     
     let createDelBtn = document.createElement('button');
     let createEditBtn = document.createElement('button');
     let createEditInp = document.createElement('input');
+    let createGrip = document.createElement('i');
+
     createDelBtn.textContent = 'Delete';
     createEditBtn.textContent= 'Edit';
+    createGrip.classList.add('fas','fa-grip-lines', 'grabItem');
     createDelBtn.classList.add('delete-btn');
     createEditBtn.classList.add('edit-btn');
     createEditInp.classList.add('edit-input');
     
+    createList.appendChild(createGrip);
     createList.appendChild(createTodo);
     createList.appendChild(createEditInp);
     createList.appendChild(createEditBtn);
@@ -81,7 +86,8 @@ const pushTodo = () => {
         });
     })
     deleteFunc(createDelBtn);
-    editFunc(createEditBtn)
+    editFunc(createEditBtn);
+    dragdrop();
     } 
 
 todoInput.addEventListener('keypress', (event) => {
