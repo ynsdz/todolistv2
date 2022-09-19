@@ -23,8 +23,9 @@ function dragdrop(){
             } else {
                 container.insertBefore(draggable, afterElement)
             }
-        })
-    })
+
+        });
+    });
     
     function getDragAfterElement(container, y) {
         const draggableElements = [...container.querySelectorAll('.todo-list:not(.dragging)')];

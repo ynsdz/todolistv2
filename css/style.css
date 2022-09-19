@@ -130,7 +130,6 @@ body {
     flex-direction: column;
 }
 
-.draggin {
+.dragging {
     opacity: 0.5;
-    position: absolute;
 }
