@@ -1,48 +1,103 @@
-const todoBttn = document.getElementById("todoButton");
-let todoInput = document.getElementById("todoInput"); 
-// let listItems = document.getElementById('todo-list');
-
-todoBttn.addEventListener('click', ()=> {
-    const todo = 
-    {
-        text : todoInput.value,
-        isCompleted : false,
-    }  
-  
-    const todoContainer = document.getElementById('todo-container')
-    let createTodo = document.createElement('li');
-    createTodo.textContent = todo.text; 
-    createTodo.classList.add('todo-list')
-    createTodo.setAttribute('isCompleted', todo.isCompleted);
-    todoContainer.appendChild(createTodo)
-    todoInput.value = '';
-    
-    createTodo.addEventListener('click',  (e)=>{
-        // let result = condition ? value1 : value2;
-        if(e.target.style.textDecoration == 'line-through'){
-            e.target.style.textDecoration = 'none';
-            e.target.style.opacity = 1;
-            
-        }else {
-            e.target.style.textDecoration = 'line-through';
-            e.target.style.opacity = 0.5;
-        }
-
-    })
+window.addEventListener('load', (Event) => {
+    const todoBttn = document.getElementById("todoButton");
+    let todoInput = document.getElementById("todoInput"); 
+    let todosArray = JSON.parse(localStorage.getItem('todos'));
+    if(!todosArray){
+        localStorage.setItem("todos", JSON.stringify([]));
+    }else{
+        todosArray.forEach(element => {
+            initTodo(element);
+        })
+    }
 })
-// setInterval()
-// const test = 
-// listItems.addEventListener('click', (e)=>{
-//     console.log(e.target)
-// })
 
+const pushTodo = () => {
+    const todo = {
+            text : todoInput.value,
+            isCompleted : false,
+            id : Math.floor((Math.random() * 100) + 1),  
+        };
+    let todosArray = JSON.parse(localStorage.getItem('todos'));
 
-// let timerId = setTimeout(function tick() {
-//     let listItems = document.getElementsByClassName('todo-list');
-//     console.log(listItems)
-//     listItems.addEventListener('click', (e)=>{
-//     console.log(e.target)
-//     })
-//     timerId = setTimeout(tick, 150); // (*)
-//   }, 200);
+    todosArray.forEach(element => {
+        if(element.id == todo.id){
+            todo.id = Math.floor((Math.random() * 100) + 1);
+        }
+    });
 
+    todosArray.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todosArray));
+
+    initTodo(todo);
+}
+
+ const initTodo = (todo) =>{
+
+    const todoContainer = document.getElementById('todo-container')
+    let createTodo = document.createElement('div');
+    createTodo.textContent = todo.text; 
+    createTodo.classList.add('todo-text');
+    
+    let container = document.getElementById('todo-container');
+    let createList = document.createElement('div');
+    createList.classList.add('todo-list');
+    createList.setAttribute('data-id', todo.id);
+    // createList.setAttribute('draggable', true);
+    
+    let createDelBtn = document.createElement('button');
+    let createEditBtn = document.createElement('button');
+    let createEditInp = document.createElement('input');
+    let createGrip = document.createElement('i');
+
+    createDelBtn.textContent = 'Delete';
+    createEditBtn.textContent= 'Edit';
+    createGrip.classList.add('fas','fa-grip-lines', 'grabItem');
+    createGrip.setAttribute('draggable', true);
+    createDelBtn.classList.add('delete-btn');
+    createEditBtn.classList.add('edit-btn');
+    createEditInp.classList.add('edit-input');
+    
+    createList.appendChild(createGrip);
+    createList.appendChild(createTodo);
+    createList.appendChild(createEditInp);
+    createList.appendChild(createEditBtn);
+    createList.appendChild(createDelBtn);
+    container.appendChild(createList);
+    
+    todoInput.value = '';
+
+    if(todo.isCompleted){
+        createTodo.classList.add('complatedTask');
+    }
+
+    createTodo.addEventListener('click', () => {
+        let todosArray = JSON.parse(localStorage.getItem('todos'));
+        todosArray.forEach(Element => {
+            if(Element.id == createTodo.parentElement.dataset.id){
+                if(Element.isCompleted){
+                    Element.isCompleted = false;
+                    createTodo.classList.remove('complatedTask');
+                    localStorage.setItem('todos', JSON.stringify(todosArray));
+                } else {
+                    Element.isCompleted = true;
+                    createTodo.classList.add('complatedTask');
+                    localStorage.setItem('todos', JSON.stringify(todosArray));
+                }
+            }
+        });
+    })
+    deleteFunc(createDelBtn);
+    editFunc(createEditBtn);
+    dragdrop();
+    } 
+
+todoInput.addEventListener('keypress', (event) => {
+    if ( event.code == "Enter") {
+        if( todoInput.value.trim().length){
+            pushTodo();
+     }
+     else{
+        alert('Cannot be empty');
+     }
+    }
+} )
