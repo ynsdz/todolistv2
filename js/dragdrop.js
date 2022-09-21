@@ -8,8 +8,23 @@ function dragdrop(){
             draggable.classList.add('dragging')
         })
         
-        draggable.addEventListener('dragend', () => {
+    draggable.addEventListener('dragend', () => {
             draggable.classList.remove('dragging')
+           
+            const localArray = JSON.parse(localStorage.getItem('todos'));
+            const domIndex = document.getElementById('todo-container').children;
+            let domArray = [];
+            
+            for (const element of domIndex){
+                domArray.push(Number(element.attributes[1].value));
+            };
+            const sortLocal = (array, sortArray) => {
+                return array.sort(
+                  (a, b) => sortArray.indexOf(a.id) - sortArray.indexOf(b.id)
+                )
+              }
+            sortLocal(localArray, domArray);
+            localStorage.setItem('todos', JSON.stringify(localArray));
         })
     })
     
@@ -23,6 +38,19 @@ function dragdrop(){
             } else {
                 container.insertBefore(draggable, afterElement)
             }
+            
+
+            // let gecici = localArray[1];
+            // console.log(localArray)
+            // let test = []
+            // for( const element of localArray){
+            //     test.push(element.id);
+            // }
+            // console.log(test)
+            
+            // test.sort(function (a, b){  
+            //     return deneme.indexOf(a) - deneme.indexOf(b);
+            //   });
 
         });
     });
