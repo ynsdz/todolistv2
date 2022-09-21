@@ -42,7 +42,7 @@ const pushTodo = () => {
     let createList = document.createElement('div');
     createList.classList.add('todo-list');
     createList.setAttribute('data-id', todo.id);
-    createList.setAttribute('draggable', true);
+    // createList.setAttribute('draggable', true);
     
     let createDelBtn = document.createElement('button');
     let createEditBtn = document.createElement('button');
@@ -52,6 +52,7 @@ const pushTodo = () => {
     createDelBtn.textContent = 'Delete';
     createEditBtn.textContent= 'Edit';
     createGrip.classList.add('fas','fa-grip-lines', 'grabItem');
+    createGrip.setAttribute('draggable', true);
     createDelBtn.classList.add('delete-btn');
     createEditBtn.classList.add('edit-btn');
     createEditInp.classList.add('edit-input');
