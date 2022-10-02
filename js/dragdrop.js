@@ -38,20 +38,6 @@ function dragdrop(){
             } else {
                 container.insertBefore(draggable, afterElement)
             }
-            
-
-            // let gecici = localArray[1];
-            // console.log(localArray)
-            // let test = []
-            // for( const element of localArray){
-            //     test.push(element.id);
-            // }
-            // console.log(test)
-            
-            // test.sort(function (a, b){  
-            //     return deneme.indexOf(a) - deneme.indexOf(b);
-            //   });
-
         });
     });
     

@@ -1,11 +1,45 @@
+:root{
+    --button-primary-bg: #1890ff;
+    --button-primary-text: #fff;
+    --button-default-bg: rgb(255, 255, 255);
+    --button-default-border: #d9d9d9;
+    --button-default-text: #000000d9;
+    --button-text-text: #000000d9;
+    --button-text-bg: #091e420a
+}
 body {
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(49,49,150,1) 35%, rgba(0,212,255,1) 100%);
     box-sizing: border-box;
     font-family: "Arial", sans-serif;
     margin: 0px;
+    font-size: 16px;
 }
 
+button{
+    cursor: pointer;
+    padding: 8px 16px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border: 1px solid transparent;
+}
+
+.button--primary{
+    color: var(--button-primary-text);
+    background-color:  var(--button-primary-bg);
+    border-color: var(--button-primary-bg);
+}
+.button--default{
+    color:var(--button-default-text);
+    background-color: var(--button-default-bg);
+    border-color: var(--button-default-border);
+}
+.button--text{
+    color:var(--button-text-text);
+    background-color: var(--button-text-bg);
+    border-color: transparent;
+}
 .app{
     display: flex;
     align-items: center;
@@ -80,7 +114,7 @@ body {
     cursor: move;
 }
 
-.edit-input{
+.edit-input {
     margin: 15px;
     flex-grow: 3;
     order: 1;
@@ -134,3 +168,4 @@ body {
 .dragging {
     opacity: 0.5;
 }
+
