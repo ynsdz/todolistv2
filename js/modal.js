@@ -38,7 +38,24 @@ class Modal {
     todos[editedTodoIndex] = this.todo;
     localStorage.setItem("todos", JSON.stringify(todos));
     descriptionText.innerHTML = this.todo.description;
+
     this.handleCancelButton();
+  }
+
+  handleEditTodo(event) {
+    const modalTodoText = document.getElementById("modal-todo-text");
+    const todos = JSON.parse(localStorage.getItem("todos"));
+    const editedTodoIndex = todos.findIndex((todo) => todo.id === this.todo.id);
+    if (modalTodoText.value.trim().length) {
+      this.todo.text = modalTodoText.value;
+      todos[editedTodoIndex] = this.todo;
+      localStorage.setItem("todos", JSON.stringify(todos));
+      const yunus = [...document.getElementById("todo-container").children];
+      const change = yunus.findIndex((todo) => {
+        return Number(todo.attributes["data-id"].value) === this.todo.id;
+      });
+      yunus[change].children[1].innerHTML = this.todo.text;
+    }
   }
 
   render() {
@@ -56,11 +73,16 @@ class Modal {
         this.handleCancelButton();
       }
     });
+    document.addEventListener("input", (event) => {
+      if (event.target.id === "modal-todo-text") {
+        this.handleEditTodo(event);
+      }
+    });
 
     const modalInner = `
         <div class="modal-inner">
             <header class="modal-header">
-                <div id="modal-todo-text" class="modal-todo-text">${this.todo.text}</div>
+                <textarea id="modal-todo-text" class="modal-todo-text" >${this.todo.text}</textarea>
                 <button id="modal-close-button" class="close-button">&times;</button>
             </header>
             <div class="modal-content">
