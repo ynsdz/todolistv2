@@ -77,14 +77,14 @@ const initTodo = (todo) => {
 
   createTodo.addEventListener("click", () => {
     let todosArray = JSON.parse(localStorage.getItem("todos"));
-    todosArray.forEach((Element) => {
-      if (Element.id == createTodo.parentElement.dataset.id) {
-        if (Element.isCompleted) {
-          Element.isCompleted = false;
+    todosArray.forEach((element) => {
+      if (element.id == createTodo.parentElement.dataset.id) {
+        if (element.isCompleted) {
+          element.isCompleted = false;
           createTodo.classList.remove("complatedTask");
           localStorage.setItem("todos", JSON.stringify(todosArray));
         } else {
-          Element.isCompleted = true;
+          element.isCompleted = true;
           createTodo.classList.add("complatedTask");
           localStorage.setItem("todos", JSON.stringify(todosArray));
         }

@@ -55,9 +55,10 @@
 .description-header > *{
     display: inline-block;
 }
-
-.description-footer {
-    display: none;
+.description-header > p {
+    font-weight: bold;
+    font-style: italic;
+    margin-right: 8px;
 }
 
 #todo-description-input{
@@ -66,4 +67,11 @@
     resize: vertical;
     display: none;
     margin-bottom: 1rem;
+}
+#todo-description-text{
+    max-height: 130px;
+    overflow-y: scroll;
+}
+.description-footer {
+    display: none;
 }
