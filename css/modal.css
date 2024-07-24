@@ -1,0 +1,77 @@
+:root{
+    --modal-inner-bg-color:#fff;
+}
+.modal{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    overflow-y: auto;
+}
+
+.modal-inner{
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--modal-inner-bg-color);
+    padding: 20px;
+    margin: auto;
+}
+
+.modal-header{
+    position: relative;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid grey;
+}
+
+.modal-header .close-button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    right: 0;   
+    transform: translateY(-50%);
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-weight: bold;
+}
+.modal-todo-text{
+    font-weight: bold;
+    color: black;
+    font-size: 1.20rem;
+    border: 0px;
+    resize: none;
+    height: 1.25rem;
+    width: 100%;
+}
+.description-header{
+    display: block;
+}
+.description-header > *{
+    display: inline-block;
+}
+.description-header > p {
+    font-weight: bold;
+    font-style: italic;
+    margin-right: 8px;
+}
+
+#todo-description-input{
+    width: 100%;
+    border: 1px solid black;
+    resize: vertical;
+    display: none;
+    margin-bottom: 1rem;
+}
+#todo-description-text{
+    max-height: 130px;
+    overflow-y: scroll;
+}
+.description-footer {
+    display: none;
+}
